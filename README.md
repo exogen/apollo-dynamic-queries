@@ -26,7 +26,9 @@ Open [http://localhost:8080/][dev server].
    configuration, the component can define some `objects`. These objects will
    (1) provide fragment extension points within the query and (2) be resolved
    into values that will be passed as props to the component. The component also
-   configures a query and variables. See the [Artist][] component.
+   configures a query and variables. See the [Artist][] component. (Note that
+   adding Name and Disambiguation onto Artist as properties is just to make
+   using them easier, it doesn’t inform the HOC or query in any way.)
 3. The [withData][] HOC creates a component that can receive objects from an
    ancestor component as props and optionally extend its objects with fragments.
    (Fragments don’t have to use the full GraphQL fragment syntax, they can just
