@@ -37,7 +37,9 @@ Open [http://localhost:8080/][dev server].
    be a list of fields – they’ll just be dumbly injected into the query using
    string interpolation. When a component wrapped with `withData` is mounting,
    it uses `context` to add its fragments to the ancestor’s objects and
-   subscribe to changes to its value. See [Name][] and [Disambiguation][].
+   subscribe to changes. That way, if the component is never rendered, the
+   fragments it adds will never be part of the query! See [Name][] and
+   [Disambiguation][].
 4. Nested queries should work just fine as long as they choose different object
    names. Components wrapped with `withData` should be able to access objects
    from multiple different ancestor queries. Nested objects using the same name
