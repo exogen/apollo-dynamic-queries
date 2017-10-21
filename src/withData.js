@@ -45,7 +45,7 @@ export default function withData (Component, options) {
     componentWillUnmount () {
       Object.keys(this.subscriptions).forEach(key => {
         const subscription = this.subscriptions[key]
-        this.context.apolloDynamicQueries.objects[key].unbuscribe(subscription)
+        this.context.apolloDynamicQueries.objects[key].unsubscribe(subscription)
         // TODO: Also remove the fragments? Not sure.
       })
     }
