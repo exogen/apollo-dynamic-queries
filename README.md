@@ -35,7 +35,7 @@ Open [http://localhost:8080/][dev server].
    ancestor query as props and optionally extend its objects with fragments.
    (Fragments don’t have to use the full GraphQL fragment syntax, they can just
    be a list of fields – they’ll just be dumbly injected into the query using
-   string interpolation. When a component wrapped with `withData` is mounting,
+   string interpolation.) When a component wrapped with `withData` is mounting,
    it uses `context` to add its fragments to the ancestor’s objects and
    subscribe to changes. That way, if the component is never rendered, the
    fragments it adds will never be part of the query! See [Name][] and
