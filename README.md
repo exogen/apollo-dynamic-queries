@@ -28,12 +28,12 @@ Open [http://localhost:8080/][dev server].
    into values that will be passed as props to the component. The component also
    configures a query and variables. See the [Artist][] component.
 3. The [withData][] HOC creates a component that can receive objects from an
-   ancestor component and extend its objects with fragments. Fragments don’t
-   have to use the full GraphQL fragment syntax, they can just be a list of
-   fields – they’ll just be dumbly injected into the query using string
-   interpolation. When a component wrapped with `withData` is mounting, it uses
-   `context` to add its fragments to the ancestor’s objects and subscribe to
-   changes to its value. See [Name][] and [Disambiguation][].
+   ancestor component as props and optionally extend its objects with fragments.
+   (Fragments don’t have to use the full GraphQL fragment syntax, they can just
+   be a list of fields – they’ll just be dumbly injected into the query using
+   string interpolation. When a component wrapped with `withData` is mounting,
+   it uses `context` to add its fragments to the ancestor’s objects and
+   subscribe to changes to its value. See [Name][] and [Disambiguation][].
 4. Nested queries should work just fine as long as they choose different object
    names. Components wrapped with `withData` should be able to access objects
    from multiple different ancestor queries. Nested objects using the same name
