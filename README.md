@@ -18,6 +18,29 @@ yarn run start
 
 Open [http://localhost:8080/][dev server].
 
+## Motivation
+
+I want the GraphQL queries being made to be dynamically defined by what
+components actually get rendered in the component tree. Relay and Apollo are
+designed for making static queries.
+
+Here’s an example of what I mean:
+
+```jsx
+<Artist mbid="5b11f4ce-a62d-471e-81fc-a69a8278c7da">
+  <header>
+    <Artist.Name />
+    <Artist.Disambiguation />
+  </header>
+</Artist>
+```
+
+I want the Artist component to define a base GraphQL query, but the fields
+needed by child components (in this case `name` and `disambiguation`) **only
+get added to the query if those components are actually rendered**. If you were
+to remove the child from the code above, the field should not be requested –
+without Artist needing to know about all the components to request fragments
+from ahead of time. It is completely dynamic.
 
 ## How it works
 
