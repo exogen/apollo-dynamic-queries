@@ -9,9 +9,10 @@ Artist.propTypes = {
   mbid: PropTypes.string.isRequired
 }
 
-export function Artist ({ className, loading, error, artist, children }) {
+export function Artist ({ className, loading, error, mbid, artist, children }) {
   return (
-    <div className={className}>
+    <div className={className ? className : 'Artist'}>
+      <small>MBID: <code>{mbid}</code></small>
       {loading ? <p>Loading…</p> : null}
       {error ? (
         <dl>
