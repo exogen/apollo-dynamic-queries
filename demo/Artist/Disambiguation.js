@@ -14,4 +14,7 @@ export default withData(Disambiguation, {
     // This can also be an array.
     artist: 'disambiguation'
   }
+  // If we don't want to add any fragments, or want to retrieve additional
+  // ancestor objects beyond what we're extending, we could define a `props`
+  // option here with a list of objects to receive as props.
 })
