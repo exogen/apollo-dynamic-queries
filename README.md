@@ -30,7 +30,7 @@ Open [http://localhost:8080/][dev server].
    adding Name and Disambiguation onto Artist as properties is just to make
    using them easier, it doesn’t inform the HOC or query in any way.)
 3. The [withData][] HOC creates a component that can receive objects from an
-   ancestor component as props and optionally extend its objects with fragments.
+   ancestor query as props and optionally extend its objects with fragments.
    (Fragments don’t have to use the full GraphQL fragment syntax, they can just
    be a list of fields – they’ll just be dumbly injected into the query using
    string interpolation. When a component wrapped with `withData` is mounting,
