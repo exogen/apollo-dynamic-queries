@@ -10,7 +10,8 @@ export function Disambiguation ({ className, artist }) {
 
 export default withData(Disambiguation, {
   fragments: {
-    // Can also be an array.
+    // Define what we need to add onto the `artist` object.
+    // This can also be an array.
     artist: 'disambiguation'
   }
 })

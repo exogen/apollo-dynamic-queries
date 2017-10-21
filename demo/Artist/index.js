@@ -26,8 +26,14 @@ export function Artist ({ className, loading, error, artist, children }) {
 
 const ArtistWithQuery = withQuery(Artist, {
   objects: {
+    // This will create a fragment extension point called `artist` and also
+    // add a prop called `artist` with the return value of this function when
+    // the query is resolved.
     artist: data => data.lookup.artist
   },
+  // Because we defined an `artist` object above, the `fragments` argument to
+  // this function will have an `artist` string, which will be the joined
+  // fragments that any descendants added!
   query: fragments => gql`
     query Artist($mbid: MBID!) {
       lookup {
