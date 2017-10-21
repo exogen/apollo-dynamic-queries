@@ -39,8 +39,8 @@ I want the Artist component to define a base GraphQL query, but the fields
 needed by child components (in this case `name` and `disambiguation`) **only
 get added to the query if those components are actually rendered**. If you were
 to remove the child from the code above, the field should not be requested –
-without Artist needing to know about all the components to request fragments
-from ahead of time. It is completely dynamic.
+without Artist needing to know about all the components from which to add
+fragments ahead of time. It is completely dynamic.
 
 ## How it works
 
