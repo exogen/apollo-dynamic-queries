@@ -1,5 +1,7 @@
 # apollo-dynamic-queries
 
+:warning: This project is highly experimental, unstable, and probably performs terribly!
+
 ## Setup
 
 ```console
