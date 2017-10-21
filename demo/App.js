@@ -1,19 +1,17 @@
 import React from 'react'
-import ApolloClient from 'apollo-client'
-import { HttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { DynamicQueryProvider } from '../src'
+import { createNetworkInterface, ApolloClient, ApolloProvider } from 'react-apollo'
 import Artist from './Artist'
 
-const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://graphbrainz.herokuapp.com/' }),
-  cache: new InMemoryCache()
+const networkInterface = createNetworkInterface({
+  uri: 'https://graphbrainz.herokuapp.com/'
 })
+
+const client = new ApolloClient({ networkInterface })
 
 export default function App () {
   return (
-    <div>
-      <DynamicQueryProvider client={client}>
+    <ApolloProvider client={client}>
+      <div>
         <Artist mbid='5b11f4ce-a62d-471e-81fc-a69a8278c7da'>
           <header>
             <Artist.Name />
@@ -29,7 +27,7 @@ export default function App () {
           <Artist.Disambiguation />
           <small>This artist query should only request the disambiguation!</small>
         </Artist>
-      </DynamicQueryProvider>
-    </div>
+      </div>
+    </ApolloProvider>
   )
 }

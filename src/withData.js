@@ -16,7 +16,7 @@ export default function withData (Component, options) {
     static displayName = `WithData(${getDisplayName(Component)})`
 
     static contextTypes = {
-      graphql: PropTypes.object
+      apolloDynamicQueries: PropTypes.object
     }
 
     subscriptions = {}
@@ -31,21 +31,21 @@ export default function withData (Component, options) {
         if (Array.isArray(value)) {
           value = value.join('\n')
         }
-        this.context.graphql.objects[key].addFragment(value)
+        this.context.apolloDynamicQueries.objects[key].addFragment(value)
         defaultProps.push(key)
       })
       const finalProps = props || defaultProps
       finalProps.forEach(key => {
         const subscription = value => this.setState({ [key]: value })
         this.subscriptions[key] = subscription
-        this.context.graphql.objects[key].subscribe(subscription)
+        this.context.apolloDynamicQueries.objects[key].subscribe(subscription)
       })
     }
 
     componentWillUnmount () {
       Object.keys(this.subscriptions).forEach(key => {
         const subscription = this.subscriptions[key]
-        this.context.graphql.objects[key].unbuscribe(subscription)
+        this.context.apolloDynamicQueries.objects[key].unbuscribe(subscription)
         // TODO: Also remove the fragments? Not sure.
       })
     }

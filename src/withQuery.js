@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withApollo } from 'react-apollo'
 import getDisplayName from './getDisplayName'
 
 export default function withQuery (Component, options) {
@@ -7,16 +8,20 @@ export default function withQuery (Component, options) {
   // as a prop using `withData()`.
   const objectDefinitions = options.objects || {}
 
-  return class WithQuery extends React.Component {
+  class WithQuery extends React.Component {
     static displayName = `WithData(${getDisplayName(Component)})`
+
+    static propTypes = {
+      client: PropTypes.object
+    }
 
     // Being wrapped in another component that makes a query is fine...
     static contextTypes = {
-      graphql: PropTypes.object
+      apolloDynamicQueries: PropTypes.object
     }
 
     static childContextTypes = {
-      graphql: PropTypes.object
+      apolloDynamicQueries: PropTypes.object
     }
 
     fragments = Object.keys(objectDefinitions).reduce((fragments, key) => {
@@ -69,7 +74,7 @@ export default function withQuery (Component, options) {
       const query = this.buildQuery()
       const variables = this.buildVariables()
       this.setState({ loading: true, error: null })
-      return this.context.graphql.client
+      return this.props.client
         .query({ query, variables })
         .then(result => {
           const objects = this.buildObjects(result)
@@ -95,13 +100,14 @@ export default function withQuery (Component, options) {
         }
         return objects
       }, {})
+      const existingContext = this.context.apolloDynamicQueries || {}
       return {
-        graphql: {
-          ...this.context.graphql,
+        apolloDynamicQueries: {
+          ...existingContext,
           // Holds each object that can be extended via fragments and subscribed
           // to.
           objects: {
-            ...this.context.graphql.objects,
+            ...existingContext.objects,
             ...objects
           }
         }
@@ -122,9 +128,10 @@ export default function withQuery (Component, options) {
     }
 
     render () {
+      const { client, ...props } = this.props
       return (
         <Component
-          {...this.props}
+          {...props}
           {...this.state.objects}
           loading={this.state.loading}
           error={this.state.error}
@@ -132,4 +139,6 @@ export default function withQuery (Component, options) {
       )
     }
   }
+
+  return withApollo(WithQuery)
 }

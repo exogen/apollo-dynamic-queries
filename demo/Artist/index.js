@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import gql from 'graphql-tag'
+import { gql } from 'react-apollo'
 import { withQuery } from '../../src'
 import Name from './Name'
 import Disambiguation from './Disambiguation'
@@ -11,7 +11,7 @@ Artist.propTypes = {
 
 export function Artist ({ className, loading, error, mbid, artist, children }) {
   return (
-    <div className={className ? className : 'Artist'}>
+    <div className={className || 'Artist'}>
       <small>MBID: <code>{mbid}</code></small>
       {loading ? <p>Loading…</p> : null}
       {error ? (
