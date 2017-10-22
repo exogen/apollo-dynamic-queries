@@ -63,6 +63,8 @@ fragments ahead of time. It is completely dynamic.
    should be able to access objects from multiple different ancestor queries. If
    a nested query defines any objects of the same name, they will just mask
    the ancestor’s object within that component subtree.
+4. No intelligent merging or conflict resolution is done on the added fragments
+   at the moment. That is on the to-do list.
 
 [DynamicQueryProvider]: src/DynamicQueryProvider.js
 [withData]: src/withData.js
