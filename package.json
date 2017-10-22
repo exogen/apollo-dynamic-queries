@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "standard --verbose | snazzy",
+    "lint:fix": "standard --fix --verbose | snazzy",
     "start": "webpack-dev-server --config demo/webpack.config.js"
   },
   "peerDependencies": {
@@ -26,6 +26,7 @@
     "react": "^16.0.0",
     "react-apollo": "^1.4.16",
     "react-dom": "^16.0.0",
+    "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "styled-components": "^2.2.1",
     "webpack": "^3.8.1",

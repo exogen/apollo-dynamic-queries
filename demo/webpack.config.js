@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'development'
 module.exports = {
   context: __dirname,
   entry: './index.js',
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: __dirname,
     compress: true
