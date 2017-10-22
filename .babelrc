@@ -1,4 +1,24 @@
 {
-  "presets": ["react-app"],
-  "plugins": ["transform-class-properties"]
+  "env": {
+    "commonjs": {
+      "presets": [
+        "es2015",
+        "stage-2",
+        "react"
+      ],
+      "plugins": [
+        "transform-runtime"
+      ]
+    },
+    "es": {
+      "presets": [
+        ["es2015", { "modules": false }],
+        "stage-2",
+        "react"
+      ],
+      "plugins": [
+        "transform-runtime"
+      ]
+    }
+  }
 }
