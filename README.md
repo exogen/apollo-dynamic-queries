@@ -47,10 +47,11 @@ fragments ahead of time. It is completely dynamic.
 1. The [withQuery][] HOC creates a component that will make a query. When
    configuring the HOC, the component can define some `objects` – these are the
    values that descendant components are allowed to extend (via fragments) and
-   receive (via props). The component also configures a `query` and `variables`.
-   See the [Artist][] component. (Note that adding Name and Disambiguation onto
-   Artist as properties is just to make using them easier, it doesn’t inform the
-   HOC or query in any way.)
+   receive (via props). If the query is like a template, then its “objects” are
+   the template blocks that can be filled in by descendants. The component also
+   configures a `query` and `variables`. See the [Artist][] component. (Note that
+   adding Name and Disambiguation onto Artist as properties is just to make using
+   them easier, it doesn’t inform the HOC or query in any way.)
 2. The [withData][] HOC creates a component that can receive objects from one or
    more ancestor queries in its `data` prop, and optionally extend them with
    fragments. (Fragments don’t have to use the full GraphQL fragment syntax,
