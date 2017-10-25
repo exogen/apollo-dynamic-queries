@@ -20,9 +20,9 @@ Open [http://localhost:8080/][dev server].
 
 ## Motivation
 
-I want the GraphQL queries being made to be dynamically defined by what
-components actually get rendered in the component tree. Relay and Apollo are
-designed for making static queries.
+Relay and Apollo are designed for making static queries. I do not want that. I
+want the GraphQL queries being made to be dynamically defined by what components
+actually get rendered in the component tree. 
 
 Here’s an example of what I mean:
 
